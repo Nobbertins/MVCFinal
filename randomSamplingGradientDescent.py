@@ -13,10 +13,11 @@ learningRate = 0.1
 
 #num of random samples
 samples = 100
-#generate range
+#define range
 xMin, xMax = (-6, 6)
 yMin, yMax = (-6, 6)
 
+#calculate negative gradient of the function at a point
 def findNegativeGradient(x, y):
     #It's important to note that the gradient can be pre-defined for a differentiable function (for f(x,y) = x^2 + y^2 it would be <2x, 2y>)
     #But estimating this way is more practical since each function has its own gradient
@@ -28,6 +29,7 @@ def findNegativeGradient(x, y):
     #return the negative gradient since we want to descend not ascend
     return [-dx, -dy]
 
+#find the minimum using gradient descent for a single point
 def findMinimum(startPoint):
     x, y = startPoint
     #descend the specified number of steps:
@@ -47,13 +49,20 @@ def findMinimum(startPoint):
     #after the descent return the point (which should hopefully be a minimum)
     return (x, y, f(x,y))
 
+#find the minimum of all samples and return the lowest one
 def findMinimumWithSamples(samples):
+    #variables to store "absolute" minimum values
     lowestZ = None
     lowestMin = None
+
+    #use gradient descent on each sample
     for i in range(samples):
+        #random start point in given range
         startPoint = [random()*(xMax-xMin)+xMin, random()*(yMax-yMin)+yMin]
+        #run gradient descent and find minimum
         min = findMinimum(startPoint)
-        x, y, z = min    
+        x, y, z = min
+
         #output the result of each random sample (only do this if samples < 100 otherwise that will be a lot of print statements!)
         #print(f"Local Minimum Found: ({x}, {y}, {z})")
 
@@ -65,6 +74,7 @@ def findMinimumWithSamples(samples):
         if z < lowestZ:
             lowestZ = z
             lowestMin = min
+            
     return lowestMin
 
 #print output of random sampling function (the lowest min found)
