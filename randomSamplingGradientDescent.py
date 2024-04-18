@@ -1,3 +1,4 @@
+#bellatrix
 from math import sqrt, sin, cos, exp
 from random import random
 #specify the function
