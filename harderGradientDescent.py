@@ -5,7 +5,7 @@ def f(x, y):
     #return pow(x,2) + pow(y,2)
     
     #non-trivial case (non-uniform valleys and peaks)
-    return 3*sin(x) + 2*cos(y) + 5*exp(-(pow(x-1, 2) + pow(y-2,2))) + 0.1*(pow(x,2)+pow(y,2))
+    return 2*sin(x) + 1*cos(y) - 8*exp(-(pow(x-2, 2) + pow(y-1,2))) + 0.1*(pow(x,2)+pow(y,2))
 
 #specify inputs
 steps = 1000
