@@ -8,7 +8,7 @@ and two examples of its use (one clear/easy, one non-trivial), and explaining ho
 
 ## Mathematica Visualizations
 `easy application.nb`: easy application visualization \
-`nontrivial application.nb: nontrivial application visualization
+`nontrivial application.nb`: nontrivial application visualization
 
 ## Presentation
 `slides.pdf`: pdf of the slides used\
