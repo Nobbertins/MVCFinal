@@ -7,13 +7,14 @@ from matplotlib.widgets import Slider
 
 #specify the function
 def f(x, y):
-    return pow(x,2) + pow(y,2)
+    return pow(x, 2) + pow(y, 2)
+    #return 2*sin(x) + 1*cos(y) - 8*exp(-(pow(x-2, 2) + pow(y-1,2))) + 0.1*(pow(x,2)+pow(y,2))
 
 #specify inputs
-steps = 100
-learningRate = 0.2
-startPoint = [0, 0]
-displaySkips = 5
+steps = 10
+learningRate = 0.5
+startPoint = [3.5, 5.5]
+displaySkips = 1
 
 def findNegativeGradient(x, y):
     #It's important to note that the gradient can be pre-defined for a differentiable function (for f(x,y) = x^2 + y^2 it would be <2x, 2y>)
@@ -81,8 +82,8 @@ fig.colorbar(surf)
 # Add a slider for the timeline
 ax_timeline = plt.axes([0.2, 0.06, 0.6, 0.03], facecolor='lightgoldenrodyellow')
 ay_timeline = plt.axes([0.2, 0.02, 0.6, 0.03], facecolor='lightgoldenrodyellow')
-x_timeline = Slider(ax_timeline, 'X', -6, 6, valinit=0, valstep=0.1)
-y_timeline = Slider(ay_timeline, 'Y', -6, 6, valinit=0, valstep=0.1)
+x_timeline = Slider(ax_timeline, 'X', -6, 6, valinit=3.5, valstep=0.1)
+y_timeline = Slider(ay_timeline, 'Y', -6, 6, valinit=5.5, valstep=0.1)
 
 def updateDescentPath(start):
     ax.clear()
@@ -91,9 +92,8 @@ def updateDescentPath(start):
     min, data = findMinimum(start, steps, learningRate, displaySkips)
     for pt, norm in data:
         x, y, z = pt
-        u, v, w = norm
-        ax.scatter(x, y, z, color='red', s=10, zorder = 5, alpha = 1)
-        ax.quiver(x, y, z, u, v, w, color='red')
+        ax.scatter(x, y, z, color='black', s=20, zorder = 5, alpha = 1)
+        print(pt)
 
 # Define the update function for the slider
 def updateX(val):
@@ -106,10 +106,7 @@ def updateY(val):
 x_timeline.on_changed(updateX)
 y_timeline.on_changed(updateY)
 
-
-#Plot the start point
-# startX, startY, startZ = data[0][0]
-# pt = ax.scatter(startX, startY, startZ, color='red', s=50, zorder = 5)
+updateDescentPath(startPoint)
 
 # Show plot
 plt.show()
