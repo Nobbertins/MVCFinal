@@ -13,7 +13,7 @@ and two examples of its use (one clear/easy, one non-trivial), and explaining ho
 ## Presentation
 `slides.pdf`: pdf of the slides used\
 `/slides`
->`s1_example`: example surface\
+>`s1_example`: example surface (aesthetically pleasing)\
 >`s5_paraboloid`: render of a simple paraboloid\
 >`s5_paraboloid_levelset`: ContourPlot of the paraboloid's level set\
 >`s6_learning_rate1`: side view of gradient descent, low learning rate\
