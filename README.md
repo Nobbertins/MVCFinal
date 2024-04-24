@@ -12,7 +12,7 @@ and two examples of its use (one clear/easy, one non-trivial), and explaining ho
 
 ## Presentation
 `slides.pdf`: pdf of the slides used\
-`/slides`\
+`/slides`
 >`s1_example`: example surface\
 >`s5_paraboloid`: render of a simple paraboloid\
 >`s5_paraboloid_levelset`: ContourPlot of the paraboloid's level set\
