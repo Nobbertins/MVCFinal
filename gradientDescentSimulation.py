@@ -1,18 +1,21 @@
 #import necessary libraries
-from math import sqrt, sin, cos, exp
+from math import sqrt
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.widgets import Slider
+
+import matplotlib.animation as animation
+
 
 #specify the function
 def f(x, y):
     return pow(x, 2) + pow(y, 2)
-    #return 2*sin(x) + 1*cos(y) - 8*exp(-(pow(x-2, 2) + pow(y-1,2))) + 0.1*(pow(x,2)+pow(y,2))
 
 #specify inputs
-steps = 10
-learningRate = 0.5
+steps = 500
+learningRate = 0.1
 startPoint = [3.5, 5.5]
 displaySkips = 1
 
@@ -29,7 +32,7 @@ def findNegativeGradient(x, y):
 
 def findMinimum(startPoint, steps, learningRate, displaySkips):
     x, y = startPoint
-    data = [((x, y, f(x, y)), (0,0,0))]
+    data = [(x, y, f(x, y))]
     #descend the specified number of steps:
     for step in range(steps):
         #output the point before each step (only do this if the step is < 1000 otherwise that will be a lot of print statements!)
@@ -45,9 +48,9 @@ def findMinimum(startPoint, steps, learningRate, displaySkips):
         x += norm[0] * learningRate
         y += norm[1] * learningRate
         point = (x, y, f(x, y))
-        data.append((point, norm))
+        data.append(point)
     #after the descent return the point (which should hopefully be a minimum)
-    return (point, data[::displaySkips])
+    return data[::displaySkips]
 
 #graph the surface
 xData = np.linspace(-6, 6, 1000)
@@ -65,16 +68,23 @@ xData, yData = np.meshgrid(xData, yData)
 
 # Create a figure and axis
 fig = plt.figure()
+
+# Creating legend with color box 
+start_patch = mpatches.Patch(color='green', label='Start Point') 
+moving_patch = mpatches.Patch(color='black', label='Current Point') 
+end_patch = mpatches.Patch(color='red', label='End Point') 
+plt.legend(handles=[start_patch, moving_patch, end_patch], loc = 'upper left')
+
 ax = fig.add_subplot(111, projection='3d')
 
 # Plot the 3D surface
 surf = ax.plot_surface(xData, yData, zData, cmap='viridis', alpha = 0.4)
 
 # Customize the plot
-ax.set_xlabel('X Label')
-ax.set_ylabel('Y Label')
-ax.set_zlabel('Z Label')
-ax.set_title('Gradient Descent')
+ax.set_xlabel('X-Axis')
+ax.set_ylabel('Y-Axis')
+ax.set_zlabel('Z-Axis')
+ax.set_title('Gradient Descent Simulation')
 
 # Add a color bar
 fig.colorbar(surf)
@@ -85,15 +95,51 @@ ay_timeline = plt.axes([0.2, 0.02, 0.6, 0.03], facecolor='lightgoldenrodyellow')
 x_timeline = Slider(ax_timeline, 'X', -6, 6, valinit=3.5, valstep=0.1)
 y_timeline = Slider(ay_timeline, 'Y', -6, 6, valinit=5.5, valstep=0.1)
 
+data = findMinimum(startPoint, steps, learningRate, displaySkips)
+x, y, z = data[0]
+a, b, c = data[-1]
+ax.scatter(x, y, z, color='green', s = 15, zorder = 6, alpha = 1)
+ax.scatter(a, b, c, color='red', s = 15, zorder = 6, alpha = 1)
+scat = ax.scatter(0, 0, 0, color='black', s= 15, zorder = 5, alpha = 1)
+
+xL = np.zeros(len(data))
+yL = np.zeros(len(data))
+zL = np.zeros(len(data))
+for i in range(len(data)):
+    xL[i] = data[i][0]
+    yL[i] = data[i][1]
+    zL[i] = data[i][2]
+
+def update(frame):
+    # for each frame, update the data stored on each artist.
+    x = np.array([xL[frame]])
+    y = np.array([yL[frame]])
+    z = np.array([zL[frame]])
+    # update the scatter plot:
+    scat._offsets3d = (x, y, z)
+    # update the line plot:
+    return scat,
+
 def updateDescentPath(start):
     ax.clear()
-    # Plot the 3D surface
-    surf = ax.plot_surface(xData, yData, zData, cmap='viridis', alpha = 0.4)
-    min, data = findMinimum(start, steps, learningRate, displaySkips)
-    for pt, norm in data:
-        x, y, z = pt
-        ax.scatter(x, y, z, color='black', s=20, zorder = 5, alpha = 1)
-        print(pt)
+    ax.set_xlabel('X-Axis')
+    ax.set_ylabel('Y-Axis')
+    ax.set_zlabel('Z-Axis')
+    ax.set_title('Gradient Descent Simulation')
+    ax.plot_surface(xData, yData, zData, cmap='viridis', alpha = 0.4)
+    global scat, xL, yL, zL
+    data = findMinimum(start, steps, learningRate, displaySkips)
+    x, y, z = data[0]
+    ax.scatter(x, y, z, color='green', s = 15, zorder = 6, alpha = 1)
+    ax.scatter(a, b, c, color='red', s = 15, zorder = 6, alpha = 1)
+    scat = ax.scatter(0, 0, 0, color='black', s= 15, zorder = 5, alpha = 1)
+    xL = np.zeros(len(data))
+    yL = np.zeros(len(data))
+    zL = np.zeros(len(data))
+    for i in range(len(data)):
+        xL[i] = data[i][0]
+        yL[i] = data[i][1]
+        zL[i] = data[i][2]
 
 # Define the update function for the slider
 def updateX(val):
@@ -106,7 +152,7 @@ def updateY(val):
 x_timeline.on_changed(updateX)
 y_timeline.on_changed(updateY)
 
-updateDescentPath(startPoint)
 
+ani = animation.FuncAnimation(fig=fig, func=update, frames= 100, interval= 10)
 # Show plot
 plt.show()
