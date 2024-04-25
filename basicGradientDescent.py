@@ -1,3 +1,16 @@
+'''
+Basic Gradient Descent
+By: Ayaan Dhuka and Enbao Cao
+
+The following program is a basic implementation of gradient descent made for our Multivariable Calculus Class' Final Project
+
+The program returns the local minimum the gradient descent algorithm finds
+
+The start point, learning rate, and number of steps can all be changed
+The surface can be changed in the f(x, y) function
+The function is currently a paraboloid defined by z = x^2 + y^2
+'''
+
 from math import sqrt
 
 #specify the function

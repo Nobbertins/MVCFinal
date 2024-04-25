@@ -1,3 +1,17 @@
+'''
+Random Sampling Gradient Descent
+By: Ayaan Dhuka and Enbao Cao
+
+The following program is an implementation of gradient descent that includes random sampling made for our Multivariable Calculus Class' Final Project
+
+The program returns the lowest minimum out of all the gradient descent samples
+
+The start point, learning rate, number of samples, range of randomization, and number of steps can all be changed
+The surface can be changed in the f(x, y) function
+The function is currently a complex surface with many local mins and one clear absolute min defined by:
+z = 2*sin(x) + 1*cos(y) - 8*exp(-(pow(x-2, 2) + pow(y-1,2))) + 0.1*(pow(x,2)+pow(y,2))
+'''
+
 from math import sqrt, sin, cos, exp
 from random import random
 #specify the function

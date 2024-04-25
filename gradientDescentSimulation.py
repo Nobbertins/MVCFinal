@@ -1,3 +1,19 @@
+'''
+Gradient Descent Simulation
+By: Ayaan Dhuka and Enbao Cao
+
+The following program is a simulation of gradient descent made for our Multivariable Calculus Class' Final Project
+
+The simulation has the following inputs adjustable by sliders:
+1. Start X Position
+2. Start Y Position
+3. Learning Rate
+4. Number of Learning Steps
+
+The start and end points are graphed and the in between points are animated on a 3D plot of the surface (which can be changed in the f(x, y) function)
+The function is currently a paraboloid defined by z = x^2 + y^2
+'''
+
 #import necessary libraries
 from math import sqrt
 import numpy as np
