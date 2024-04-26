@@ -11,7 +11,7 @@ and two examples of its use (one clear/easy, one non-trivial), and explaining ho
 `nontrivial application.nb`: nontrivial application visualization
 
 ## Presentation
-`Gradient Descent Project Video`: our video, covering the presentation
+`Gradient Descent Project Video`: our video, covering the presentation\
 `slides.pdf`: pdf of the slides used\
 `slides source files`
 >`s1_example`: example surface (aesthetically pleasing)\
