@@ -31,5 +31,5 @@ and two examples of its use (one clear/easy, one non-trivial), and explaining ho
 `Math Project Sources`: sources for our research
 
 ## Contributors
-- [Ayaan Dhuka](https://github.com/Nobbertins)
-- [Enbao Cao](https://github.com/ecao77)
+- [Ayaan Dhuka](https://github.com/Nobbertins) (Nobbertins)
+- [Enbao Cao](https://github.com/ecao77) (ecao77)
