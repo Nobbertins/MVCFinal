@@ -12,7 +12,7 @@ and two examples of its use (one clear/easy, one non-trivial), and explaining ho
 
 ## Presentation
 `Gradient Descent Project Video`: our video, covering the presentation\
-`slides.pdf`: pdf of the slides used\
+`slides.pdf`: pdf of the slides used\ \
 `slides source files`
 >`s1_example`: example surface (aesthetically pleasing!)\
 >`s5_paraboloid`: a paraboloid\
