@@ -27,7 +27,7 @@ and two examples of its use (one clear/easy, one non-trivial), and explaining ho
 >`s8_two_mins`: showing the difference between Mathematica's minimum (red) and our minimum (cyan)
 
 ## Document
-`MVC Project Document`: our document, providing more detail than the video.
+`MVC Project Document`: our document, providing more detail than the video.\
 `Math Project Sources`: sources for our research
 
 ## Contributors
