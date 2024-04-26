@@ -11,8 +11,9 @@ and two examples of its use (one clear/easy, one non-trivial), and explaining ho
 `nontrivial application.nb`: nontrivial application visualization
 
 ## Presentation
+`Gradient Descent Project Video`: our video, covering the presentation
 `slides.pdf`: pdf of the slides used\
-`/slides`
+`/slides source files`
 >`s1_example`: example surface (aesthetically pleasing)\
 >`s5_paraboloid`: a paraboloid\
 >`s5_paraboloid_levelset`: paraboloid's level set\
@@ -25,7 +26,8 @@ and two examples of its use (one clear/easy, one non-trivial), and explaining ho
 >`s8_samples_detail`: an optimal gradient descent from a random starting point\
 >`s8_two_mins`: showing the difference between Mathematica's minimum (red) and our minimum (cyan)
 
-  
+## Document
+`MVC Project Document.`: our document, providing more detail than the video.
 
 ## Contributors
 - [Ayaan Dhuka](https://github.com/Nobbertins)
